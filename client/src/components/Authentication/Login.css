@@ -1,6 +1,6 @@
 .Login {
   display: inline-block;
-  width: 25vw;
+  max-width: 100%;
   background-color: lightgreen;
   padding: 1rem;
   margin: 1rem;

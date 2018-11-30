@@ -11,14 +11,28 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'You must enter a password'],
-    minlength: [8, 'Password must be between 10 and 128 characters'],
-    maxlength: [99, 'Password must be between 10 and 128 characters']
+    minlength: [8, 'Password must be between 10 and 30 characters'],
+    maxlength: [30, 'Password must be between 10 and 30 characters']
   },
   email: {
     type: String,
     required: [true, 'You must enter an email'],
     minlength: [5, 'Email must be between 5 and 99 characters'],
     maxlength: [99, 'Email must be between 5 and 99 characters']
+  },
+  // state: {
+  //   type: String,
+  //   required: [true, 'You must enter a state'],
+  //   minlength: [2, 'Please enter a 2-digit state abbreviation'],
+  //   maxlength: [2, 'Please enter a 2-digit state abbreviation']
+  // },
+  parksToVisit: {
+    type: Array,
+    required: [false]
+  },
+  visitedParks: {
+    type: Array,
+    required: [false]
   }
 });
 

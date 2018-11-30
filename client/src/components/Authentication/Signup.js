@@ -10,14 +10,12 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      passHasCap: false,
-      passHasLow: false,
-      passHasDig: false,
-      passHasPunc: false,
+      // location: '',
       error: null
     }
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleEmailChange = this.handleEmailChange.bind(this)
+    // this.handleLocationChange = this.handleLocationChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -32,43 +30,13 @@ class Signup extends Component {
       email: e.target.value
     })
   }
+  // handleLocationChange(e) {
+  //   this.setState({
+  //     location: e.target.value
+  //   })
+  // }
   handlePasswordChange(e) {
-    if (e.target.value.match(/[A-Z]/g)) {
-      this.setState({
-        passHasCap: true
-      })
-    } else {
-      this.setState({
-        passHasCap: false
-      })
-    }
-    if (e.target.value.match(/[a-z]/g)) {
-      this.setState({
-        passHasLow: true
-      })
-    } else {
-      this.setState({
-        passHasLow: false
-      })
-    }
-    if (e.target.value.match(/\d/g)) {
-      this.setState({
-        passHasDig: true
-      })
-    } else {
-      this.setState({
-        passHasDig: false
-      })
-    }
-    if (e.target.value.match(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g)) {
-      this.setState({
-        passHasPunc: true
-      })
-    } else {
-      this.setState({
-        passHasPunc: false
-      })
-    }
+   
     this.setState({
       password: e.target.value
     })
@@ -76,19 +44,16 @@ class Signup extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    if (this.state.password.length < 10 || this.state.password > 99) {
+    if (this.state.password.length < 8 || this.state.password > 99) {
       // Password does not meet length requirements
       this.setState({
         error: {
           type: 'auth_error',
           status: 401,
-          message: 'Password must be between 10 and 128 characters.'
+          message: 'Password must be between 8 and 128 characters.'
         },
         password: '',
-        passHasCap: false,
-        passHasLow: false,
-        passHasDig: false,
-        passHasPunc: false
+        // location: '',
       })
     } else if (!(this.state.passHasCap && this.state.passHasLow && this.state.passHasDig && this.state.passHasPunc)) {
       // Password does not meet complexity requirements
@@ -99,10 +64,7 @@ class Signup extends Component {
           message: 'Password not strong enough. Please meet requirements below.'
         },
         password: '',
-        passHasCap: false,
-        passHasLow: false,
-        passHasDig: false,
-        passHasPunc: false
+        // location: '',
       })
     } else {
       axios.post('/auth/signup', {
@@ -115,10 +77,7 @@ class Signup extends Component {
             error: result.data,
             email: '',
             password: '',
-            passHasCap: false,
-            passHasLow: false,
-            passHasDig: false,
-            passHasPunc: false
+            // location: '',
           })
         } else {
           localStorage.setItem('mernToken', result.data.token)
@@ -168,16 +127,14 @@ class Signup extends Component {
               <input name="s-password" type='password' value={this.state.password} onChange={this.handlePasswordChange} />
             </div>
           </div>
-          <div>
-            <p>Password must meet these requirements:</p>
-            <ul>
-              <li className={(this.state.password.length > 9 && this.state.password.length < 129) ? "green" : "red"}>Length (10 to 128): {this.state.password.length}</li>
-              <li className={(this.state.passHasCap) ? "green" : "red"}>Contain 1+ uppercase letter (A-Z)</li>
-              <li className={(this.state.passHasLow) ? "green" : "red"}>Contain 1+ lowercase letter (a-z)</li>
-              <li className={(this.state.passHasDig) ? "green" : "red"}>Contain 1+ digit (0-9)</li>
-              <li className={(this.state.passHasPunc) ? "green" : "red"}>Contain 1+ special character (punctuation)</li>
-            </ul>
-          </div>
+          {/* <div className="input-box">
+            <div className="left-col">
+              <label htmlFor="s-location">State:</label>
+            </div>
+            <div className="right-col">
+              <input name="s-location" type='location' value={this.state.location} onChange={this.handleLocationChange} />
+            </div>
+          </div> */}
           <input type='submit' value='Sign Up!' />
         </form>
       </div>

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import Login from './Login';
-import Signup from './Signup';
+import Login from './components/Authentication/Login';
+import Signup from './components/Authentication/Signup';
+import WelcomePage from './components/WelcomePage';
+import Parks from './components/Parks/Parks'
 import {UserProfile} from './UserProfile';
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -84,33 +87,34 @@ class App extends Component {
   }
 
   render() {
-    let user = this.state.user
-    if (user) {
-      return (
-        <div className="App">
-          <header>
-            <h1>Welcome to my Site!</h1>
-          </header>
-          <div className="content-box">
-            <UserProfile user={user} logout={this.logout} />
-            <p><a onClick={this.handleClick}>Test the protected route. Results below...</a></p>
-            <p>{this.state.lockedResult}</p>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="App">
-          <header>
-            <h1>Welcome to my Site!</h1>
-          </header>
-          <div className="content-box">
-            <Signup liftToken={this.liftTokenToState} />
-            <Login liftToken={this.liftTokenToState} />
-          </div>
-        </div>
-      )
-    }
+    <Router>
+      <Switch>
+        let user = this.state.user
+        if (user) {
+          return (
+            <div className="App">
+              <div className="content-box">
+                <UserProfile user={user} logout={this.logout} />
+                <p><a onClick={this.handleClick}>Test the protected route. Results below...</a></p>
+                <p>{this.state.lockedResult}</p>
+              </div>
+            </div>
+          );
+        } else {
+          return (
+            <div className="App">
+              <WelcomePage />
+              <Signup liftToken={this.liftTokenToState} />
+              <Login liftToken={this.liftTokenToState} />
+            </div>
+          )
+        }
+          <Route exact path='/' component={() => <WelcomePage />} />
+          <Route exact path='/login' component={() => <Login />} />
+          <Route exact path='/signup' component={() => <Signup />} />
+          <Route path='/parks/:id' component={(props) => <Parks/>} />
+        </Switch>
+    </Router>
   }
 }
 
