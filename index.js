@@ -1,16 +1,16 @@
 require('dotenv').config();
 const express = require('express');
-const bp = require('body-parser');
 const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
 const auth = require('./routes/auth');
 const locked = require('./routes/locked');
+const apiRoutes = require('./routes/api');
 const RateLimit = require('express-rate-limit');
 
 const app = express();
 // This line lets us accept POST data from axios
-app.use(bp.json());
-app.use(bp.urlencoded({extended: false}));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 // mongoose.connect('mongodb://localhost/jwtAuth');
 require('./config/database')
@@ -33,6 +33,8 @@ var signupLimiter = new RateLimit({
 
 app.use('/auth/login', loginLimiter);
 app.use('/auth/signup', signupLimiter);
+
+app.use('/api', apiRoutes);
 
 app.use('/auth', auth);
 // This line uses the express-jwt node module to protect the routes

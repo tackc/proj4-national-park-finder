@@ -4,6 +4,8 @@ const Park = require('../models/Park');
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
+Parks.deleteMany({} (err) => err ? console.log(err) : 'Collection removed')
+
 const PARKS = []
 for (let i = 0; i < 256; i += 16) {
 	let r = i

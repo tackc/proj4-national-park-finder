@@ -4,9 +4,9 @@ import axios from 'axios';
 import Login from './components/Authentication/Login';
 import Signup from './components/Authentication/Signup';
 import WelcomePage from './components/WelcomePage';
-import Parks from './components/Parks/Parks'
-import {UserProfile} from './UserProfile';
-import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import Parks from './components/Parks/AllParks'
+// import {UserProfile} from './UserProfile';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -15,12 +15,21 @@ class App extends Component {
       token: '',
       user: null,
       error: null,
-      lockedResult: ''
+      lockedResult: '',
+      parks: [],
+      stateCode: null
     }
     this.checkForLocalToken = this.checkForLocalToken.bind(this)
     this.logout = this.logout.bind(this)
     this.liftTokenToState = this.liftTokenToState.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.liftStateCodeToState = this.liftStateCodeToState.bind(this)
+  }
+  liftStateCodeToState(code) {
+    axios.get(`/api/parks/${code}`)
+      .then(result => console.log(result))
+    // this.setState({parks: result})
+    // console.log(code)
   }
 
   liftTokenToState(data) {
@@ -87,35 +96,21 @@ class App extends Component {
   }
 
   render() {
-    <Router>
-      <Switch>
-        let user = this.state.user
-        if (user) {
-          return (
-            <div className="App">
-              <div className="content-box">
-                <UserProfile user={user} logout={this.logout} />
-                <p><a onClick={this.handleClick}>Test the protected route. Results below...</a></p>
-                <p>{this.state.lockedResult}</p>
-              </div>
-            </div>
-          );
-        } else {
-          return (
-            <div className="App">
-              <WelcomePage />
-              <Signup liftToken={this.liftTokenToState} />
-              <Login liftToken={this.liftTokenToState} />
-            </div>
-          )
-        }
-          <Route exact path='/' component={() => <WelcomePage />} />
-          <Route exact path='/login' component={() => <Login />} />
-          <Route exact path='/signup' component={() => <Signup />} />
-          <Route path='/parks/:id' component={(props) => <Parks/>} />
+    return (
+          <div className="App">
+      <Router>          
+        <Switch>
+              <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
+              <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
+              <Route path='/parks' render={(props) => <Parks/>} />
+              <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} liftStateCodeToState={this.liftStateCodeToState}/>} />
+              {/* <Route path */}
         </Switch>
-    </Router>
+      </Router>
+          </div>
+    )
   }
 }
+
 
 export default App;

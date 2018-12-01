@@ -1,0 +1,24 @@
+/* * {
+    border: 1px solid red;
+} */
+.RefForms {
+    width: 50%;
+    padding: 0.5em;
+    margin: auto;
+}
+
+section {
+    padding: 0.5em;
+    margin: auto;
+    vertical-align: top;
+    height: 1em;
+}
+
+.StateSearchBox {
+    background-color: gray;
+    overflow: visible;
+    min-height: 20vh;
+    vertical-align: top;
+    width: 30vw;
+    margin: auto;
+}
