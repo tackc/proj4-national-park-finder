@@ -14,11 +14,17 @@ section {
     height: 1em;
 }
 
-.StateSearchBox {
+.DropdownMenu {
+    height: 2em;
+    background-color: aliceblue;
+    text-align: center;
+}
+
+/* .StateSearchBox {
     background-color: gray;
     overflow: visible;
     min-height: 20vh;
     vertical-align: top;
     width: 30vw;
     margin: auto;
-}
+} */

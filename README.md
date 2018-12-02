@@ -1,6 +1,13 @@
 # About National Parks Finder
 I created the National Parks Finder App to help users find parks to visit in the destination of their choosing. Users can save their favorites as well as parks they have visited.
 
+### Technologies Used
+* Express
+* React
+* React Router
+* Javascript
+* CSS
+
 ### Project Status
 [View the Trello Board](https://trello.com/b/GMDSY876)
 
@@ -27,3 +34,9 @@ As a user, I would like to:
 ![Entity Relation Diagram](https://i.imgur.com/MX9niak.png)
 
 ### Wireframe
+
+
+### Unsolved Problems
+
+
+### Future Enhancements

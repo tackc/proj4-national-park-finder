@@ -25,8 +25,8 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.liftStateCodeToState = this.liftStateCodeToState.bind(this)
   }
-  liftStateCodeToState(code) {
-    axios.get(`/api/parks/${code}`)
+  liftStateCodeToState(stateCode) {
+    axios.get(`/api/parks/${stateCode}`)
       .then(result => console.log(result))
     // this.setState({parks: result})
     // console.log(code)
