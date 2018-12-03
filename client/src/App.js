@@ -4,7 +4,8 @@ import axios from 'axios';
 import Login from './components/Authentication/Login';
 import Signup from './components/Authentication/Signup';
 import WelcomePage from './components/WelcomePage';
-import Parks from './components/Parks/AllParks'
+import Parks from './components/Parks/AllParks';
+import ParkDetails from './components/Parks/ParkDetails';
 // import {UserProfile} from './UserProfile';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -17,7 +18,8 @@ class App extends Component {
       error: null,
       lockedResult: '',
       parks: [],
-      stateCode: null
+      stateCode: null,
+      parkDetails: null
     }
     this.checkForLocalToken = this.checkForLocalToken.bind(this)
     this.logout = this.logout.bind(this)
@@ -103,6 +105,7 @@ class App extends Component {
               <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
               <Route path='/parks' render={(props) => <Parks parks={this.state.parks} />} />
+              <Route path='/parks/:id' render={(props) => <ParkDetails parks={this.state.parks} />} />
               <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState}/>} />
               {/* <Route path */}
         </Switch>
