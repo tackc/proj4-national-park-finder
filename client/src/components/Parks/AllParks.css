@@ -1,0 +1,16 @@
+.Parks {
+    width: 100vw
+}
+
+.OnePark {
+    max-width: 80%;
+    max-height: 50vh;
+    background-color: blanchedalmond;
+    padding: 1em;
+    margin: 1em auto;
+}
+
+.ParkImage {
+    width: 100%;
+    
+}

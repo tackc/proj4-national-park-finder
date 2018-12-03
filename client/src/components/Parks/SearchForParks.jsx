@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './SearchForParks.css';
+// import {Route} from 'react-router';
 
 class SearchForParks extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class SearchForParks extends Component {
     handleSubmit(e) {
         e.preventDefault()
         this.props.liftStateCodeToState(e.target.value)
-        this.setState({stateCode: e.target.value})
+        this.setState({stateCode: e.target.value});
     }
 
     handleChange(e) {

@@ -1,12 +1,12 @@
 import React from 'react';
 import './WelcomePage.css';
 import RandomPark from './Parks/RandomPark';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import SearchForParks from './Parks/SearchForParks';
 
 const WelcomePage = (props) => {
     var content;
-    console.log("props of welcome:", props)
+    // console.log("props of welcome:", props)
     if (props.user) {
         content = <p>Hello {props.user.name}</p>
     } else {
@@ -16,6 +16,11 @@ const WelcomePage = (props) => {
                 <Link to="/login"><button>LOG IN</button></Link>
             </div>
         )
+    }
+    console.log("This is the parks prop:", props.parks)
+    if (props.parks.length > 0) {
+        console.log("checking the length of parks array in WelcomePage")
+        return <Redirect to="/parks" />
     }
 
     return (

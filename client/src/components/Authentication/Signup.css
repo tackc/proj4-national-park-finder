@@ -10,13 +10,25 @@
     text-align: center;
 }
 
+.PasswordRequirements {
+  width: 80vw;
+  margin: auto;
+}
+
+.SubmitBtn {
+  width: 20vw;
+  margin: auto;
+}
+
 form {
   width: 100%;
+  margin: auto;
 }
 
 input {
   height: 3em;
-  width: 90vw;
+  width: 90%;
+  margin: auto;
 }
 
 .input-box {

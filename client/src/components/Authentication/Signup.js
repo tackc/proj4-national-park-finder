@@ -10,12 +10,10 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      // location: '',
       error: null
     }
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleEmailChange = this.handleEmailChange.bind(this)
-    // this.handleLocationChange = this.handleLocationChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -30,13 +28,7 @@ class Signup extends Component {
       email: e.target.value
     })
   }
-  // handleLocationChange(e) {
-  //   this.setState({
-  //     location: e.target.value
-  //   })
-  // }
   handlePasswordChange(e) {
-
     this.setState({
       password: e.target.value
     })
@@ -44,16 +36,15 @@ class Signup extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    if (this.state.password.length < 8 || this.state.password > 99) {
+    if (this.state.password.length < 10 || this.state.password > 99) {
       // Password does not meet length requirements
       this.setState({
         error: {
           type: 'auth_error',
           status: 401,
-          message: 'Password must be between 8 and 128 characters.'
+          message: 'Password must be between 10 and 128 characters.'
         },
-        password: '',
-        // location: '',
+        password: ''
       })
     } else if (!(this.state.passHasCap && this.state.passHasLow && this.state.passHasDig && this.state.passHasPunc)) {
       // Password does not meet complexity requirements
@@ -63,8 +54,7 @@ class Signup extends Component {
           status: 401,
           message: 'Password not strong enough. Please meet requirements below.'
         },
-        password: '',
-        // location: '',
+        password: ''
       })
     } else {
       axios.post('/auth/signup', {
@@ -76,8 +66,7 @@ class Signup extends Component {
           this.setState({
             error: result.data,
             email: '',
-            password: '',
-            // location: '',
+            password: ''
           })
         } else {
           localStorage.setItem('mernToken', result.data.token)
@@ -100,6 +89,7 @@ class Signup extends Component {
     let errorPanel = (this.state.error) ? <ErrorPanel error={this.state.error} /> : ''
     return (
       <div className="Signup">
+        <h3>⬅︎</h3>
         <h3>Create a new account:</h3>
         {errorPanel}
         <form onSubmit={this.handleSubmit}>
@@ -127,15 +117,7 @@ class Signup extends Component {
               <input name="s-password" type='password' value={this.state.password} onChange={this.handlePasswordChange} />
             </div>
           </div>
-          {/* <div className="input-box">
-            <div className="left-col">
-              <label htmlFor="s-location">State:</label>
-            </div>
-            <div className="right-col">
-              <input name="s-location" type='location' value={this.state.location} onChange={this.handleLocationChange} />
-            </div>
-          </div> */}
-          <input type='submit' value='Sign Up!' />
+          <input className="SubmitBtn" type='submit' value='Sign Up!' />
         </form>
       </div>
     )

@@ -27,7 +27,7 @@ class App extends Component {
   }
   liftStateCodeToState(stateCode) {
     axios.get(`/api/parks/${stateCode}`)
-      .then(result => console.log(result))
+      .then(result => this.setState({parks: result.data.data}))
     // this.setState({parks: result})
     // console.log(code)
   }
@@ -97,17 +97,17 @@ class App extends Component {
 
   render() {
     return (
-          <div className="App">
+    <div className="App">
       <Router>          
         <Switch>
               <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
-              <Route path='/parks' render={(props) => <Parks/>} />
-              <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} liftStateCodeToState={this.liftStateCodeToState}/>} />
+              <Route path='/parks' render={(props) => <Parks parks={this.state.parks} />} />
+              <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState}/>} />
               {/* <Route path */}
         </Switch>
       </Router>
-          </div>
+    </div>
     )
   }
 }
