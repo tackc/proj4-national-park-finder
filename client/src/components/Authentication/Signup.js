@@ -36,7 +36,7 @@ class Signup extends Component {
   //   })
   // }
   handlePasswordChange(e) {
-   
+
     this.setState({
       password: e.target.value
     })
