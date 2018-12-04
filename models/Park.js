@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 const parkSchema = new mongoose.Schema({
     parkId: {
@@ -9,10 +10,7 @@ const parkSchema = new mongoose.Schema({
         type: String,
         required: [true]
     },
-    commentId: {
-        type: String,
-        required: [false]
-    }
+    Comment: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
 
 const Park = mongoose.model('Park', parkSchema);

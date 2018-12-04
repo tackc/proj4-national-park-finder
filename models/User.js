@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
@@ -20,20 +21,22 @@ const userSchema = new mongoose.Schema({
     minlength: [5, 'Email must be between 5 and 99 characters'],
     maxlength: [99, 'Email must be between 5 and 99 characters']
   },
+  favoriteParks: [{type: Schema.Types.ObjectId, ref: 'Park'}]
+
   // state: {
   //   type: String,
   //   required: [true, 'You must enter a state'],
   //   minlength: [2, 'Please enter a 2-digit state abbreviation'],
   //   maxlength: [2, 'Please enter a 2-digit state abbreviation']
   // },
-  parksToVisit: {
-    type: Array,
-    required: [false]
-  },
-  visitedParks: {
-    type: Array,
-    required: [false]
-  }
+  // parksToVisit: {
+  //   type: Array,
+  //   required: [false]
+  // },
+  // visitedParks: {
+  //   type: Array,
+  //   required: [false]
+  // }
 });
 
 // This returns a user object without a password

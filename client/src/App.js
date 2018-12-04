@@ -104,8 +104,8 @@ class App extends Component {
         <Switch>
               <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
-              <Route path='/parks' render={(props) => <Parks parks={this.state.parks} />} />
-              <Route path='/parks/:id' render={(props) => <ParkDetails parks={this.state.parks} />} />
+              <Route exact path='/parks' render={(props) => <Parks parks={this.state.parks} />} />
+              <Route path='/parks/:id' render={(props) => <ParkDetails parks={this.state.parks} {...props} />} />
               <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState}/>} />
               {/* <Route path */}
         </Switch>

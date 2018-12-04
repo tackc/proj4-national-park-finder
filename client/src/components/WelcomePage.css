@@ -33,3 +33,12 @@ button:hover {
 h3 {
     margin-block-start: 0%;
 }
+
+/* @media (min-width: 800px) {
+    .WelcomePage {
+        max-width: 50%;
+    }
+    .WelcomePage img {
+        width: 50%;
+    }
+} */
