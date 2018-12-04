@@ -42,10 +42,6 @@ class App extends Component {
     })
   }
 
-  handleFavoriteClick() {
-    this.props.addToFavorites(this.props.park)
-}
-
   handleClick(e) {
     e.preventDefault()
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.state.token
