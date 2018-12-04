@@ -36,13 +36,13 @@ class Signup extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    if (this.state.password.length < 10 || this.state.password > 99) {
+    if (this.state.password.length < 8 || this.state.password > 99) {
       // Password does not meet length requirements
       this.setState({
         error: {
           type: 'auth_error',
           status: 401,
-          message: 'Password must be between 10 and 128 characters.'
+          message: 'Password must be between 8 and 99 characters.'
         },
         password: ''
       })
@@ -52,7 +52,7 @@ class Signup extends Component {
         error: {
           type: 'auth_error',
           status: 401,
-          message: 'Password not strong enough. Please meet requirements below.'
+          message: 'Password must be between 8 and 99 characters.'
         },
         password: ''
       })

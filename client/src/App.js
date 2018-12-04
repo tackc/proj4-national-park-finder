@@ -26,6 +26,7 @@ class App extends Component {
     this.liftTokenToState = this.liftTokenToState.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.liftStateCodeToState = this.liftStateCodeToState.bind(this)
+    this.handleFavoriteClick = this.handleFavoriteClick.bind(this)
   }
   liftStateCodeToState(stateCode) {
     axios.get(`/api/parks/${stateCode}`)
@@ -40,6 +41,10 @@ class App extends Component {
       user: data.user
     })
   }
+
+  handleFavoriteClick() {
+    this.props.addToFavorites(this.props.park)
+}
 
   handleClick(e) {
     e.preventDefault()
@@ -105,7 +110,7 @@ class App extends Component {
               <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
               <Route exact path='/parks' render={(props) => <Parks parks={this.state.parks} />} />
-              <Route path='/parks/:id' render={(props) => <ParkDetails parks={this.state.parks} {...props} />} />
+              <Route path='/parks/:id' render={(props) => <ParkDetails parks={this.state.parks} handleFavoriteClick={this.handleFavoriteClick} {...props} />} />
               <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState}/>} />
               {/* <Route path */}
         </Switch>

@@ -3,12 +3,7 @@ var Schema = mongoose.Schema;
 
 const parkSchema = new mongoose.Schema({
     parkId: {
-        type: String,
-        required: [true]
-    },
-    parkFullName: {
-        type: String,
-        required: [true]
+        type: String
     },
     Comment: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
