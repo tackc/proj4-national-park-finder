@@ -28,7 +28,7 @@ class App extends Component {
     this.liftTokenToState = this.liftTokenToState.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.liftStateCodeToState = this.liftStateCodeToState.bind(this)
-    this.getFavoriteParks = this.getFavoriteParks.bind(this)
+    // this.getFavoriteParks = this.getFavoriteParks.bind(this)
     this.handleStateSelect = this.handleStateSelect.bind(this)
   }
   liftStateCodeToState(stateCode) {
