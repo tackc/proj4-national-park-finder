@@ -37,15 +37,15 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
-  getFavoriteParks() {
-    console.log("inside getFavoriteParks")
-    let currentUser = this.state.user._id
-    let obj = {currentUser}
-    axios.get('/api/favoriteparks', obj)
-    .then(result => {console.log(result)})
-    .then(result => this.setState(result))
-    .catch(err => {console.log(err)})
-  }
+  // getFavoriteParks() {
+  //   console.log("inside getFavoriteParks")
+  //   let currentUser = this.state.user._id
+  //   let obj = {currentUser}
+  //   axios.get('/api/favoriteparks', obj)
+  //   .then(result => {console.log(result)})
+  //   .then(result => this.setState(result))
+  //   .catch(err => {console.log(err)})
+  // }
 
   liftTokenToState(data) {
     this.setState({
@@ -107,7 +107,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    this.getFavoriteParks()
+    // this.getFavoriteParks()
   }
 
   componentDidMount() {
