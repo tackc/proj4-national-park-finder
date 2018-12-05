@@ -3,6 +3,7 @@ const router = express.Router();
 var request = require('request');
 const axios = require('axios');
 const rootURL = 'https://api.nps.gov/api/v1/';
+const User = require('../models/User');
 
 
 // GET ALL PARKS
@@ -41,19 +42,15 @@ router.get('/visitorcenters', function(req, res) {
 
 // ADD PARK TO FAVORITES
 
-router.post('/favoriteParks', function (req, res) {
-    res.send('POST request to the favoriteParks list')
+router.post('/favoriteparks', function (req, res) {
+    User.findOne({_id: req.body.currentUser}, function (err, user) {
+        if(err) res.send(err)
+        let favoriteParks = user.favoriteParks;
+        favoriteParks.push(req.body.parkToAdd)
+        user.update()
+        res.json(user)
+    })
+    // res.send('POST request to the favoriteParks list')
 })
-
-
-// axios.post('/:user/favoriteparks', {
-//     parkId: ""
-//     })
-//     .then(function (response) {
-//         console.log(response);
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });
 
 module.exports = router;

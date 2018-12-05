@@ -46,16 +46,16 @@ class Signup extends Component {
         },
         password: ''
       })
-    } else if (!(this.state.passHasCap && this.state.passHasLow && this.state.passHasDig && this.state.passHasPunc)) {
-      // Password does not meet complexity requirements
-      this.setState({
-        error: {
-          type: 'auth_error',
-          status: 401,
-          message: 'Password must be between 8 and 99 characters.'
-        },
-        password: ''
-      })
+    // } else if (!(this.state.passHasCap && this.state.passHasLow && this.state.passHasDig && this.state.passHasPunc)) {
+    //   // Password does not meet complexity requirements
+    //   this.setState({
+    //     error: {
+    //       type: 'auth_error',
+    //       status: 401,
+    //       message: '0Password must be between 8 and 99 characters.'
+    //     },
+    //     password: ''
+    //   })
     } else {
       axios.post('/auth/signup', {
         name: this.state.name,

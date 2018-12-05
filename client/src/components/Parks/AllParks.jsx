@@ -8,8 +8,8 @@ const AllParks = (props) => {
         <div className="Parks">
             {/* <h2>Parks in {props.state.stateCode}</h2> */}
             {props.parks.map((park, i) => 
-                <Link to={`/parks/${park.id}`}>
-                    <div key={park.id} className="OnePark"> 
+                <Link key={park.id} to={`/parks/${park.id}`}>
+                    <div className="OnePark"> 
                         <div className="ParkImage">
                             {park.images.length ? <img key={park.images[0].id} src={park.images[0].url} alt=""/> : ""}
                         </div>

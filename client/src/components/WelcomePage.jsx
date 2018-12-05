@@ -17,7 +17,7 @@ const WelcomePage = (props) => {
             </div>
         )
     }
-    console.log("This is the parks prop:", props.parks)
+    // console.log("This is the parks prop:", props.parks)
     if (props.parks.length > 0) {
         console.log("checking the length of parks array in WelcomePage")
         return <Redirect to="/parks" />
