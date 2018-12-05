@@ -52,13 +52,12 @@ router.post('/favoriteparks', function (req, res) {
 })
 
 // GET FAVORITE PARKS
-// router.get('/favoriteparks', function(req, res) {
-//     User.findOne({_id: req.body.currentUser}, function (err, user) {
-//         if(err) res.send("Yo, you're getting an error")
-//         let favoriteParks = user.favoriteParks;
-//         console.log(favoriteParks)
-//         res.json(favoriteParks)
-//     })
-// })
+router.get('/favoriteparks', function(req, res) {
+    User.findOne({_id: req.body.currentUser}, function (err, user) {
+        if(err) res.send("Yo, you're getting an error")
+        console.log(favoriteParks)
+        res.json(user.favoriteParks)
+    })
+})
 
 module.exports = router;

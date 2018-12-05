@@ -1,5 +1,8 @@
 # About National Parks Finder
-I created the National Parks Finder App to help users find parks to visit in the destination of their choosing. Users can save their favorites as well as parks they have visited. The app was build with mobile-first in mind. Media queries were used to ensure the app is aesthetically pleasing on larger displays
+I created the National Parks Finder App to help users find parks to visit in the destination of their choosing. Users can save their favorites as well as parks they have visited. The app was build with mobile-first in mind. Media queries were used to ensure the app is aesthetically pleasing on larger displays.
+
+[View the app on Heroku!](https://nationalparksfinder.herokuapp.com/)
+
 
 ---
 
