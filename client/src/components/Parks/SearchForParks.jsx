@@ -28,13 +28,6 @@ class SearchForParks extends Component {
         return (
         <div className="StateSearchBox">
             <div className="RefForms">
-                {/* <section>
-                    <h3>Please enter a 2-character state code</h3>
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="stateCode" ref={this.stateCodeInput}/>
-                        <input type="submit" />
-                    </form>
-                </section> */}
                 <select value={this.state.stateCode} onChange={this.handleSubmit} name="StateName" className="DropdownMenu">
                     <option value="" defaultValue="selected">Select a State</option>
                     <option value="AL">Alabama</option>

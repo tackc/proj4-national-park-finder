@@ -32,8 +32,7 @@ router.get('/parks/:code', function(req, res) {
 // GET ALL VISITORS CENTERS
 router.get('/visitorcenters', function(req, res) {
     request(
-        rootURL + 'visitorcenters/' + req.body + 
-            'api_key=' + process.env.NPS_API_KEY,
+        rootURL + 'visitorcenters/' + req.body + 'api_key=' + process.env.NPS_API_KEY,
         function(err, response, body) {
             res.json(JSON.parse(body))
         }

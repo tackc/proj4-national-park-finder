@@ -6,6 +6,7 @@ import Signup from './components/Authentication/Signup';
 import WelcomePage from './components/WelcomePage';
 import Parks from './components/Parks/AllParks';
 import ParkDetails from './components/Parks/ParkDetails';
+import FavoriteParks from './components/Parks/FavoriteParks';
 // import {UserProfile} from './UserProfile';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -18,6 +19,7 @@ class App extends Component {
       error: null,
       lockedResult: '',
       parks: [],
+      favoriteParks: [],
       stateCode: null,
       parkDetails: null
     }
@@ -106,6 +108,7 @@ class App extends Component {
               <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
               <Route exact path='/parks' render={(props) => <Parks parks={this.state.parks} />} />
               <Route path='/parks/:id' render={({match}) => <ParkDetails match={match.params} parks={this.state.parks} handleFavoriteClick={this.handleFavoriteClick} {...this.state} />} />
+              <Route path='/favoriteparks' render={() => <FavoriteParks parks={this.state.favoriteParks} /> } />
               <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState}/>} />
               {/* <Route path */}
         </Switch>

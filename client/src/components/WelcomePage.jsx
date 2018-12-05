@@ -6,9 +6,12 @@ import SearchForParks from './Parks/SearchForParks';
 
 const WelcomePage = (props) => {
     var content;
-    // console.log("props of welcome:", props)
+    // var favorites
     if (props.user) {
         content = <h3>Welcome {props.user.name}</h3>
+        // if (props.favoriteParks.length) {
+        //     favorites = <span><button onClick={this.viewFavorites}>View Favorites</button></span>
+        // }
     } else {
         content = (
             <div>
