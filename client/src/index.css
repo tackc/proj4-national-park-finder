@@ -10,6 +10,7 @@ body {
   max-width: 100%;
   background-image: url('https://static1.squarespace.com/static/500c5c5084ae823f9b01b655/515cd498e4b02ae078533b47/515cd555e4b0daad6e783602/1365038425595/_DSC6356.jpg?format=2500w');
   background-attachment: fixed;
+  background-position: center;
   align-content: center;
   background-size: cover;
 }

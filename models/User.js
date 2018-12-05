@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema({
 // This returns a user object without a password
 userSchema.set('toObject', {
   transform: function(doc, ret, options) {
+    console.log('in toObject')
     let returnJson = {
       _id: ret._id,
       email: ret.email,

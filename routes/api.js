@@ -40,16 +40,25 @@ router.get('/visitorcenters', function(req, res) {
 });
 
 // ADD PARK TO FAVORITES
-
 router.post('/favoriteparks', function (req, res) {
     User.findOne({_id: req.body.currentUser}, function (err, user) {
         if(err) res.send(err)
         let favoriteParks = user.favoriteParks;
         favoriteParks.push(req.body.parkToAdd)
-        user.update()
+        console.log(user)
+        user.save()
         res.json(user)
     })
-    // res.send('POST request to the favoriteParks list')
 })
+
+// GET FAVORITE PARKS
+// router.get('/favoriteparks', function(req, res) {
+//     User.findOne({_id: req.body.currentUser}, function (err, user) {
+//         if(err) res.send("Yo, you're getting an error")
+//         let favoriteParks = user.favoriteParks;
+//         console.log(favoriteParks)
+//         res.json(favoriteParks)
+//     })
+// })
 
 module.exports = router;

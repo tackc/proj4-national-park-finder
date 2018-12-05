@@ -4,6 +4,12 @@ import {Link} from 'react-router-dom';
 
 const FavoriteParks = (props) => {
     
+    // getFavorites() {
+    //     let parkToAdd = this.park.id
+    //     let currentUser = this.props.user._id
+    //     let obj = {parkToAdd, currentUser}
+    //     axios.post('/api/favoriteparks', obj)
+    
     return (
         <div className="Parks">
             <h2>Your Favorite Parks:</h2>

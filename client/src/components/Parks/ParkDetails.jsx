@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import './ParkDetails.css';
 import axios from 'axios';
 
@@ -38,6 +39,7 @@ class ParkDetails extends Component {
         return (
             <div className="ParkDetails">
                 <div key={this.park.id} className="OneParkDetails"> 
+                    <span><Link to='/parks'> <button>Back</button> </Link></span>
                     <span><button onClick={this.addToFavorites}>Add to Favorites</button></span>
                     <div className="ParkImage">
                         {this.park.images.length ? <img key={this.park.images[0].id} src={this.park.images[0].url} alt=""/> : ""}

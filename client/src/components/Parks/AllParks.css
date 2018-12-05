@@ -2,6 +2,11 @@
     width: 100vw
 }
 
+h1 {
+    color: white;
+    font-weight: 700;
+}
+
 .OnePark {
     max-width: 80%;
     max-height: 95vh;
@@ -20,4 +25,10 @@
     height: 100%;
     image-rendering: optimizeSpeed;
     object-fit: scale-down;
+}
+
+@media screen and (min-width: 500px) {
+    .Parks {
+        max-width: 500px;
+    }
 }

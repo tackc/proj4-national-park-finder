@@ -33,7 +33,7 @@ const WelcomePage = (props) => {
             <div className="AuthButtons">
                 {content}
             </div>
-            <SearchForParks liftStateCodeToState={props.liftStateCodeToState}/>
+            <SearchForParks liftStateCodeToState={props.liftStateCodeToState} handleStateSelect={props.handleStateSelect}/>
             <RandomPark />
         </div>
     )

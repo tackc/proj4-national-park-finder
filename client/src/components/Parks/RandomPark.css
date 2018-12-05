@@ -15,3 +15,14 @@
 h4 {
     margin: .3em;
 }
+
+@media screen and (min-width: 500px) {
+    .RandomParkImage {
+        max-width: 350px;
+        background-size: cover;
+        margin: 0 auto;
+    }
+    .RandomPark {
+        max-width: 350px;
+    }
+}

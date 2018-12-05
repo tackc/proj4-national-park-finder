@@ -28,12 +28,23 @@ class App extends Component {
     this.liftTokenToState = this.liftTokenToState.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.liftStateCodeToState = this.liftStateCodeToState.bind(this)
+    this.getFavoriteParks = this.getFavoriteParks.bind(this)
+    this.handleStateSelect = this.handleStateSelect.bind(this)
   }
   liftStateCodeToState(stateCode) {
     axios.get(`/api/parks/${stateCode}`)
       .then(result => this.setState({parks: result.data.data}))
-    // this.setState({parks: result})
-    // console.log(code)
+      .catch(err => console.log(err))
+  }
+
+  getFavoriteParks() {
+    console.log("inside getFavoriteParks")
+    let currentUser = this.state.user._id
+    let obj = {currentUser}
+    axios.get('/api/favoriteparks', obj)
+    .then(result => {console.log(result)})
+    .then(result => this.setState(result))
+    .catch(err => {console.log(err)})
   }
 
   liftTokenToState(data) {
@@ -95,8 +106,18 @@ class App extends Component {
     }
   }
 
+  componentDidUpdate() {
+    this.getFavoriteParks()
+  }
+
   componentDidMount() {
     this.checkForLocalToken()
+    // this.getFavoriteParks()
+  }
+
+  handleStateSelect(stateCode) {
+    console.log('firing stateSelect', stateCode)
+    this.setState({stateCode})
   }
 
   render() {
@@ -106,10 +127,10 @@ class App extends Component {
         <Switch>
               <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
-              <Route exact path='/parks' render={(props) => <Parks parks={this.state.parks} />} />
+              <Route exact path='/parks' render={(props) => <Parks stateCode={this.state.stateCode} parks={this.state.parks} />} />
               <Route path='/parks/:id' render={({match}) => <ParkDetails match={match.params} parks={this.state.parks} handleFavoriteClick={this.handleFavoriteClick} {...this.state} />} />
               <Route path='/favoriteparks' render={() => <FavoriteParks parks={this.state.favoriteParks} /> } />
-              <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState}/>} />
+              <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState} handleStateSelect={this.handleStateSelect}/>} />
               {/* <Route path */}
         </Switch>
       </Router>

@@ -3,10 +3,11 @@ import './AllParks.css';
 import {Link} from 'react-router-dom';
 
 const AllParks = (props) => {
-    
+    console.log(props)
     return (
         <div className="Parks">
-            {/* <h2>Parks in {props.state.stateCode}</h2> */}
+            <h1>National Parks in {props.stateCode}</h1>
+            {/* <span><Link to={'/'}> <button>Home</button> </Link></span> */}
             {props.parks.map((park, i) => 
                 <Link key={park.id} to={`/parks/${park.id}`}>
                     <div className="OnePark"> 

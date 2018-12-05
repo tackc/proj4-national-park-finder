@@ -17,11 +17,12 @@ class SearchForParks extends Component {
         e.preventDefault()
         this.props.liftStateCodeToState(e.target.value)
         this.setState({stateCode: e.target.value});
+        this.handleChange(e.target.value)
     }
-
+    
     handleChange(e) {
-        e.preventDefault()
-        this.setState({stateCode: e.target.value});
+        this.props.handleStateSelect(e);
+        // this.setState({stateCode: e.target.value});
     }
 
     render() {
