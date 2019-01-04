@@ -3,7 +3,6 @@ I created the National Parks Finder App to help users find parks to visit in the
 
 [View the app on Heroku!](https://nationalparksfinder.herokuapp.com/)
 
-
 ---
 
 ### Technologies Used

@@ -125,13 +125,13 @@ class App extends Component {
     <div className="App">
       <Router>          
         <Switch>
-              <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
-              <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
-              <Route exact path='/parks' render={(props) => <Parks stateCode={this.state.stateCode} parks={this.state.parks} />} />
-              <Route path='/parks/:id' render={({match}) => <ParkDetails match={match.params} parks={this.state.parks} handleFavoriteClick={this.handleFavoriteClick} {...this.state} />} />
-              <Route path='/favoriteparks' render={() => <FavoriteParks parks={this.state.favoriteParks} /> } />
-              <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState} handleStateSelect={this.handleStateSelect}/>} />
-              {/* <Route path */}
+          <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
+          <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} />} />
+          <Route exact path='/parks' render={(props) => <Parks stateCode={this.state.stateCode} parks={this.state.parks} />} />
+          <Route path='/parks/:id' render={({match}) => <ParkDetails match={match.params} parks={this.state.parks} handleFavoriteClick={this.handleFavoriteClick} {...this.state} />} />
+          <Route path='/favoriteparks' render={() => <FavoriteParks parks={this.state.favoriteParks} /> } />
+          <Route exact path='/' render={(props) => <WelcomePage user={this.state.user} parks={this.state.parks} liftStateCodeToState={this.liftStateCodeToState} handleStateSelect={this.handleStateSelect}/>} />
+          {/* <Route path */}
         </Switch>
       </Router>
     </div>
