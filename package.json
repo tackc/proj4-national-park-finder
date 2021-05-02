@@ -13,7 +13,7 @@
     "express-jwt": "^6.0.0",
     "express-rate-limit": "^5.2.6",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.13",
+    "mongoose": "^5.12.7",
     "querystringify": "^2.2.0",
     "react-dev-utils": "^7.0.5",
     "react-dom": "^16.14.0",
